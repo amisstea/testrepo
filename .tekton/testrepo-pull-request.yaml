@@ -546,14 +546,22 @@ spec:
       runAfter:
       - build-image-index
       taskRef:
+        # params:
+        # - name: name
+        #   value: push-dockerfile-oci-ta
+        # - name: bundle
+        #   value: quay.io/konflux-ci/tekton-catalog/task-push-dockerfile-oci-ta:0.1@sha256:443e665458bd44f029c8e44e8d4c44e4faa8c533f129014ccb3c4c51fd89bbfc
+        # - name: kind
+        #   value: task
+        # resolver: bundles
         params:
-        - name: name
-          value: push-dockerfile-oci-ta
-        - name: bundle
-          value: quay.io/konflux-ci/tekton-catalog/task-push-dockerfile-oci-ta:0.1@sha256:443e665458bd44f029c8e44e8d4c44e4faa8c533f129014ccb3c4c51fd89bbfc
-        - name: kind
-          value: task
-        resolver: bundles
+        - name: url
+          value: https://github.com/amisstea/build-definitions.git
+        - name: revision
+          value: KFLUXVNGD-149
+        - name: pathInRepo
+          value: task/push-dockerfile-oci-ta/0.1/push-dockerfile-oci-ta.yaml
+        resolver: git
     - name: rpms-signature-scan
       params:
       - name: image-url
