@@ -224,6 +224,8 @@ spec:
         value: $(tasks.prefetch-dependencies.results.CACHI2_ARTIFACT)
       - name: IMAGE_APPEND_PLATFORM
         value: "true"
+      - name: HTTP_PROXY
+        value: http://squid.proxy.svc.cluster.local:3128
       runAfter:
       - prefetch-dependencies
       taskRef:
